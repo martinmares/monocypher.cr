@@ -11,7 +11,7 @@ development_dependencies:
   ameba:
     github: crystal-ameba/ameba
 
-scripts:
+development:
   postinstall:
     - mkdir -p ./.build
     - cc ./ext/monocypher.c -c -o ./.build/monocypher.o -O2 -std=gnu99
