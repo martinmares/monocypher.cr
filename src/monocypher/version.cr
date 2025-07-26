@@ -1,3 +1,3 @@
 module MonoCypher
-  VERSION = "4.0.1"
+  VERSION = "1.0.0"
 end

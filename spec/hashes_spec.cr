@@ -56,31 +56,10 @@ describe Crypto::Digest::SHA512 do
   end
 end
 
-describe Crypto::Digest::BLAKE2b do
+describe Crypto::Digest::Blake2b do
   it "support Crystal interface of hashes" do
-    digest = Crypto::Digest::BLAKE2b.new
+    digest = Crypto::Digest::Blake2b.new
     digest << "123"
     digest.final.should eq Crypto.blake2b("123".to_slice)
-  end
-
-  it "can be initialized with custom parameters" do
-    digest = Crypto::Digest::BLAKE2b.new(hash_size: 32, key: Bytes.new(16))
-    digest << "123"
-    digest.final.size.should eq 32
-  end
-
-  it "verifies size of digest parameters" do
-    expect_raises(ArgumentError) { Crypto::Digest::BLAKE2b.new(hash_size: 128) }
-    expect_raises(ArgumentError) { Crypto::Digest::BLAKE2b.new(key: Bytes.new(128)) }
-  end
-end
-
-describe Crypto::Digest::SHA512HMAC do
-  it "support Crystal interface of hashes" do
-    key = "12345".to_slice
-    digest = Crypto::Digest::SHA512HMAC.new(key)
-    digest << "123"
-    digest.final.should eq Crypto.sha512_hmac("123".to_slice, key)
-    expect_raises(ArgumentError) { Crypto::Digest::SHA512HMAC.new("".to_slice) }
   end
 end
