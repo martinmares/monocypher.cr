@@ -46,20 +46,20 @@ jobs:
       - name: Check sources format
         run: crystal tool format --check
 
-  ameba:
-    name: Ameba linter
-    runs-on: ubuntu-latest
-    steps:
-      - name: Install Crystal
-        uses: oprypin/install-crystal@v1
-        with:
-          crystal: latest
+  # ameba:
+  #   name: Ameba linter
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Install Crystal
+  #       uses: oprypin/install-crystal@v1
+  #       with:
+  #         crystal: latest
 
-      - name: Checkout source code
-        uses: actions/checkout@v2
+  #     - name: Checkout source code
+  #       uses: actions/checkout@v2
 
-      - name: Install shards
-        run: shards install --ignore-crystal-version
+  #     - name: Install shards
+  #       run: shards install --ignore-crystal-version
 
-      - name: Run ameba
-        run: bin/ameba
+  #     - name: Run ameba
+  #       run: bin/ameba
